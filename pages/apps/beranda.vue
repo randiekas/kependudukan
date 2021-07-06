@@ -7,7 +7,7 @@
 			color="text--black"/>
 		<v-row class="mt-2">
 			<v-col v-for="(item, index) in apps" :key="index" sm="12" md="3" cols="12">
-				<v-card :class="`border--primary ${item.link=='/apps/kk'?'primary':''}`" elevation="1" :dark="item.link=='/apps/kk'">
+				<v-card :class="`border--primary ${item.link=='/apps/penduduk'?'primary':''}`" elevation="1" :dark="item.link=='/apps/penduduk'">
 					<v-card-title class="pb-0">
 						<v-icon left>{{item.ikon}}</v-icon>
 						{{item.nama}}
@@ -17,7 +17,7 @@
 					</v-card-text>
 					<v-card-actions>
 						<v-spacer></v-spacer>
-						<v-btn :color="item.link=='/apps/kk'?'white':'primary'" text :to="item.link" dark>
+						<v-btn :color="item.link=='/apps/penduduk'?'white':'primary'" text :to="item.link" dark>
 							Buka
 							<v-icon right dark>mdi-launch</v-icon>
 						</v-btn>

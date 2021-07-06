@@ -1,33 +1,31 @@
 <template>
 	<div>
         <v-card>
-        <v-app-bar
-            color="white"
-            elevation="0"
-            >
-            <v-btn 
-                icon
-                v-on:click="goBack">
-                <v-icon>mdi-chevron-left</v-icon>
-            </v-btn>
-
-            <v-toolbar-title>{{crud.title}}</v-toolbar-title>
-            <v-spacer></v-spacer>
-            <slot name="action">
+            <v-app-bar
+                color="white"
+                elevation="0">
                 <v-btn 
-                    small 
-                    color="primary"
-                    v-on:click="handleOpenFormTambah"
-                    class="d-none d-sm-flex">
-                    <v-icon left>mdi-plus-circle</v-icon>
-                    Tambah
+                    icon
+                    v-on:click="goBack">
+                    <v-icon>mdi-chevron-left</v-icon>
                 </v-btn>
-            </slot>
-    </v-app-bar>
+
+                <v-toolbar-title>{{crud.title}}</v-toolbar-title>
+                <v-spacer></v-spacer>
+                <slot name="action" :handleOpenFormTambah="handleOpenFormTambah">
+                    <v-btn 
+                        small 
+                        color="primary"
+                        v-on:click="handleOpenFormTambah"
+                        class="d-none d-sm-flex">
+                        <v-icon left>mdi-plus-circle</v-icon>
+                        Tambah
+                    </v-btn>
+                </slot>
+            </v-app-bar>
     <!-- untuk table -->
-            
                 <div class="d-flex d-sm-none pl-4 pr-4">
-                    <slot name="action">
+                    <slot name="action" :handleOpenFormTambah="handleOpenFormTambah">
                     <v-btn 
                         block
                         small 
@@ -40,7 +38,9 @@
                 </div>
             
         
-        <slot name="filter" :handleUpdateData="handleUpdateData"></slot>
+        <slot name="filter" :handleUpdateData="handleUpdateData" :handelSearch="handelSearch"></slot>
+        </v-card>
+        <v-card class="mt-6">
 		<v-data-table
 			dense
 			:headers="crud.headers.filter((item)=>item.table!=false)"
@@ -48,6 +48,7 @@
 			:items="data"
 			item-key="name"
 			elevation="0"
+            :search="kataKunci"
 			height="75vh">
             <template
                 v-if="crud.nested"
@@ -130,9 +131,9 @@
                     </td>
                 </template> -->
             </template>
-			<template v-slot:[`item.status`]="{item}">
+			<!-- <template v-slot:[`item.status`]="{item}">
 				<v-switch v-model="item.status" readonly class="mt-0" style="height:-webkit-fill-available"/>
-			</template>
+			</template> -->
 			<template v-slot:[`item.aksi`]="{item}">
                 <div>
                     <slot 
@@ -250,6 +251,7 @@ export default {
             dialogDelete: false,
             dialogTitle: '',
             data: [],
+            kataKunci: '',
         }
     },
     mounted(){ 
@@ -363,8 +365,8 @@ export default {
                 parents: headers
             }
         },
-        tes(){
-            alert("tes")
+        handelSearch(ini){
+            this.kataKunci  = ini.target.value
         }
 	}
 }

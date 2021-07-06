@@ -127,30 +127,6 @@ export default {
 					},
 				],
 				'desa': [
-					{
-						"ikon": "mdi-map-outline",
-						"nama":"Provinsi",
-						"deskripsi":"Kelola data master Provinsi",
-						"link":"/apps/provinsi"
-					},
-					{
-						"ikon": "mdi-map-marker-multiple-outline",
-						"nama":"Kabupaten",
-						"deskripsi":"Kelola data master Kabupaten / Kota",
-						"link":"/apps/kabupaten"
-					},
-					{
-						"ikon": "mdi-map-marker-radius-outline",
-						"nama":"Kecamatan",
-						"deskripsi":"Kelola data master Kecamatan",
-						"link":"/apps/kecamatan"
-					},
-					{
-						"ikon": "mdi-home-city",
-						"nama":"Desa",
-						"deskripsi":"Kelola data master Desa/Kelurahan",
-						"link":"/apps/desa"
-					},
                     {
 						"ikon": "mdi-home-group",
 						"nama":"Dusun",
@@ -159,10 +135,16 @@ export default {
 					},
 					{
 						"ikon": "mdi-account-box-multiple-outline",
-						"nama":"K. Keluarga",
-						"deskripsi":"Kelola data kartu keluarga",
-						"link":"/apps/kk"
+						"nama":"Penduduk",
+						"deskripsi":"Kelola data penduduk",
+						"link":"/apps/penduduk"
 					},
+					// {
+					// 	"ikon": "mdi-account-box-multiple-outline",
+					// 	"nama":"K. Keluarga",
+					// 	"deskripsi":"Kelola data kartu keluarga",
+					// 	"link":"/apps/kk"
+					// },
                     {
 						"ikon": "mdi-file-chart",
 						"nama":"Laporan",

@@ -1,18 +1,26 @@
 <template>
-	<div class="grey lighten-4" style="height:100%">
+	<div class="grey lighten-4 fill-height">
 		<v-container>
-		<Crud
-			:crud="crud">
-            <template v-slot:action>
-                <v-btn 
-                    small 
-                    color="primary"
-                    class="d-none d-sm-flex">
-                    <v-icon left>mdi-information-outline</v-icon>
-                    data diperbaharui setiap jam 12 malam
-                </v-btn>
-            </template>
-            <template v-slot:filter="{handleUpdateData}">
+            <v-card>
+                <v-app-bar
+                    color="white"
+                    elevation="0">
+                    <v-btn 
+                        icon
+                        v-on:click="goBack">
+                        <v-icon>mdi-chevron-left</v-icon>
+                    </v-btn>
+
+                    <v-toolbar-title>Laporan Penduduk</v-toolbar-title>
+                    <v-spacer></v-spacer>
+                    <v-btn 
+                        v-on:click="handelCetak"
+                        small
+                        class="primary">
+                        <v-icon left>mdi-database-refresh-outline</v-icon>
+                        Generate data
+                    </v-btn>
+                </v-app-bar>
                 <v-row class="ml-2 mr-2 pt-0 pb-0 justify-center align-center" dense>
                     <v-col md="1" cols="12">
                         <v-autocomplete
@@ -30,14 +38,7 @@
                             item-text="nama"
                             item-value="id"/>
                     </v-col>
-                    <v-col md="2" cols="12">
-                        <v-autocomplete
-                            label="Pilih Provinsi"
-                            v-model="provinsiDipilih"
-                            :items="provinsi"
-                            item-text="nama"
-                            item-value="id"/>
-                    </v-col>
+                    
                     <v-col md="2" cols="12">
                         <v-autocomplete
                             label="Pilih Kabupaten"
@@ -62,7 +63,17 @@
                             item-text="nama"
                             item-value="id"/>
                     </v-col>
-                    
+                    <v-col md="2" cols="12">
+                        <v-btn 
+                            small 
+                            block
+                            v-on:click="handelCetak">
+                            <v-icon left small>
+                                mdi-printer
+                            </v-icon>
+                            Cetak / Export PDF
+                        </v-btn>
+                    </v-col>
                     <v-col md="2" cols="12">
                         <v-btn 
                             small 
@@ -75,23 +86,115 @@
                         </v-btn>
                     </v-col>
                 </v-row>
-                <div>
-                    <v-chip 
-                        v-for="(item, index) in grup" :key="index"
-                        class="ma-2"
-                        :color="index===grupDipilih?'primary':'default'"
-                        v-on:click="handelFilterGrup(index)">
-                            {{item}}
-                    </v-chip>
-                </div>
-            </template>
-        </Crud>
+            </v-card>
+            <v-card class="mt-6">
+                <v-card-text>
+                    <vue-html2pdf
+                        :show-layout="true"
+                        :float-layout="false"
+                        :enable-download="false"
+                        :preview-modal="true"
+                        filename="print laporan"
+                        :paginate-elements-by-height="1100"
+                        :pdf-quality="2"
+                        pdf-format="a4"
+                        pdf-orientation="landscape"
+                        pdf-content-width="100%"
+                        :manual-pagination="false"
+                        ref="html2Pdf">
+                        <section slot="pdf-content" style="padding:12px">
+                            <p class="text-overline">1. Jumlah Penduduk</p>
+                            <small>
+                            <table style="width:100%; margin:8px">
+                                <thead>
+                                    <tr >
+                                        <th rowspan="3" class="text-center">NO</th>
+                                        <th rowspan="3" class="text-center">DUSUN</th>
+                                        <th colspan="6" class="text-center">JUMLAH PENDUDUK&nbsp;</th>
+                                        <th colspan="12" class="text-center">PROSES PERUBAHAN PENDUDUK</th>
+                                        <th colspan="3" class="text-center">KK</th>
+                                    </tr>
+                                    <tr >
+                                        <th colspan="3" class="text-center">BULAN LALU</th>
+                                        <th colspan="3" class="text-center">BULAN INI</th>
+                                        <th colspan="3" class="text-center">LAHIR</th>
+                                        <th colspan="3" class="text-center">MATI</th>
+                                        <th colspan="3" class="text-center">KELUAR</th>
+                                        <th colspan="3" class="text-center">DATANG</th>
+                                        <th rowspan="2" class="text-center">L</th>
+                                        <th rowspan="2" class="text-center">P</th>
+                                        <th rowspan="2" class="text-center">JML</th>
+                                    </tr>
+                                    <tr >
+                                        <th>L</th>
+                                        <th>P</th>
+                                        <th>JUMLAH</th>
+                                        <th>L</th>
+                                        <th>P</th>
+                                        <th>JUMLAH</th>
+                                        <th>L&nbsp;</th>
+                                        <th>P</th>
+                                        <th>JML</th>
+                                        <th>L&nbsp;</th>
+                                        <th>P</th>
+                                        <th>JML</th>
+                                        <th>L&nbsp;</th>
+                                        <th>P</th>
+                                        <th>JML</th>
+                                        <th>L</th>
+                                        <th>P</th>
+                                        <th>JML</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                    <tr >
+                                        <td>1</td>
+                                        <td>DUSUN 1</td>
+                                        <td>10</td>
+                                        <td>8</td>
+                                        <td>18</td>
+                                        <td>12</td>
+                                        <td>12</td>
+                                        <td>24</td>
+                                        <td>2</td>
+                                        <td>2</td>
+                                        <td>4</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>0</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>0</td>
+                                        <td>&nbsp;</td>
+                                        <td>2</td>
+                                        <td>2</td>
+                                        <td>8</td>
+                                        <td>8</td>
+                                        <td>16</td>
+                                    </tr>
+                                </tbody>
+                                
+                            </table>
+                            </small>
+                            <p class="text-overline">2. Penduduk Berdasarkan Agama</p>
+                            <p class="text-overline">3. Penduduk Berdasarkan Status Perkawinan</p>
+                            <p class="text-overline">4. Penduduk Berdasarkan Pendidikan</p>
+                            <p class="text-overline">5. Penduduk Berdasarkan Pekerjaan</p>
+                        </section>
+                    </vue-html2pdf>
+                </v-card-text>
+            </v-card>    
 		</v-container>
 	</div>
 </template>
 <script>
+import VueHtml2pdf from 'vue-html2pdf'
 export default {
-	layout:'apps',
+    layout:'apps',
+    components: {
+        VueHtml2pdf
+    },
 	props: [],
     async asyncData({ $api }) {
         let grup        = [
@@ -101,8 +204,8 @@ export default {
                             'Berdasarkan Pendidikan',
                             'Berdasarkan Pekerjaan',
                         ]
-		let provinsi    = (await $api.$get(`/v1/api/data/master_provinsi`)).data
-        let kabupaten   = (await $api.$get(`/v1/api/query/master_kabupaten?where=id_provinsi=${provinsi[0].id}`)).data
+		var provinsiDipilih = 1
+        let kabupaten   = (await $api.$get(`/v1/api/query/master_kabupaten?where=id_provinsi=${provinsiDipilih}`)).data
         let kecamatan   = (await $api.$get(`/v1/api/query/master_kecamatan?where=id_kabupaten=${kabupaten[0].id}`)).data
         let desa        = (await $api.$get(`/v1/api/query/master_desa?where=id_kecamatan=${kecamatan[0].id}`)).data
         
@@ -113,8 +216,7 @@ export default {
             tahunDipilih: 2021,
             bulan: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'November', 'Oktober', 'Desember'],
             bulanDipilih: 'Juli',
-			provinsi,
-            provinsiDipilih: provinsi[0].id,
+            provinsiDipilih: 1,
             kabupaten,
             kabupatenDipilih: kabupaten[0].id,
             kecamatan,
@@ -294,6 +396,15 @@ export default {
         }
     },
 	methods:{
+        goBack(){
+            history.back()
+        },
+        handelCetak(){
+			this.$refs.html2Pdf.generatePdf()
+		},
+        handleUpdateData: function(){
+
+        },
 		handelFilterGrup: function(index){
             this.grupDipilih    = index
             const headers       = [
@@ -1001,3 +1112,11 @@ export default {
 	}
 }
 </script>
+<style>
+table, th, td
+{
+    border-collapse:collapse;
+    border: 1px solid black;
+    text-align:center;
+}
+</style>
