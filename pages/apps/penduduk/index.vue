@@ -183,11 +183,11 @@ export default {
                         options: [
                             {
                                 label: 'Laki-laki',
-                                value: 'L',
+                                value: 'l',
                             },
                             {
                                 label: 'Perempuan',
-                                value: 'P',
+                                value: 'p',
                             },
                         ],
                     }, 
@@ -228,6 +228,10 @@ export default {
                             {
                                 label: 'Budha',
                                 value: 'budha',
+                            },
+                            {
+                                label: 'Kepercayaan Lainnya',
+                                value: 'lainnya',
                             },
                         ],
                     }, 
@@ -362,16 +366,20 @@ export default {
                                 value: 'belum',
                             },
                             {
-                                label: 'Kawin',
-                                value: 'kawin',
+                                label: 'Kawin Tecatat',
+                                value: 'tercatat',
                             },
                             {
-                                label: 'Janda',
-                                value: 'janda',
+                                label: 'Kawin Belum Tercatat',
+                                value: 'belum tercatat',
                             },
                             {
-                                label: 'Duda',
-                                value: 'duda',
+                                label: 'Cerai Mati',
+                                value: 'cerai mati',
+                            },
+                            {
+                                label: 'Cerai Hidup',
+                                value: 'cerai hidup',
                             },
                         ],
                     }, 
