@@ -190,7 +190,7 @@ export default {
         let no_kk           = params.id
 		let desa            = (await $api.$get(`/v1/api/detil/master_desa/saya`)).data
 		let data            = (await $api.$get(`/v1/api/query/master_kk_anggota?where=no_kk='${no_kk}'`)).data
-        let kepala_keluarga = data.filter((item)=>item.status_hubungan_dalam_keluarga=="kepala keluarga")[0]
+        let kepala_keluarga = data.filter((item)=>item.status_hubungan_dalam_keluarga.toLocaleLowerCase()=="kepala keluarga")[0]
 		return {
             no_kk,
             data,
@@ -394,6 +394,10 @@ export default {
                                 label: 'O',
                                 value: 'o',
                             },
+                            {
+                                label: 'Tidak Tahu',
+                                value: 'tidak tahu',
+                            }
                         ],
                     }, 
                     {
