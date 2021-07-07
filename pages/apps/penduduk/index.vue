@@ -353,6 +353,10 @@ export default {
                                 label: 'O',
                                 value: 'o',
                             },
+                            {
+                                label: 'Tidak Tahu',
+                                value: 'tidak tahu',
+                            }
                         ],
                     }, 
                     {

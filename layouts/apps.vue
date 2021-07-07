@@ -152,6 +152,12 @@ export default {
 						"deskripsi":"Informasi laporan",
 						"link":"/apps/laporan"
 					},
+					{
+						"ikon": "mdi-home-city",
+						"nama":"Desa",
+						"deskripsi":"Kelola data master Desa/Kelurahan",
+						"link":"/apps/desa"
+					},
 				],
 			},
 		}

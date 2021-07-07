@@ -155,12 +155,15 @@
                 </div>
 			</template>
 			<template v-slot:[`item.lampiran`]="{item}">
-				<v-btn small :href="`https://asschem.id/${item.lampiran}`" target="_blank">
+				<v-btn v-if="item.lampiran!=null && item.lampiran!=''" small :href="`https://sikadduduk-morowali.asschem.id/${item.lampiran}`" target="_blank">
 					<v-icon small left>
 						mdi-launch
 					</v-icon>
                     Buka
 				</v-btn>
+                <div v-else>
+                    -
+                </div>
 				
 			</template>
 		</v-data-table>

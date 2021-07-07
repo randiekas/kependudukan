@@ -95,9 +95,27 @@
                         :manual-pagination="false"
                         ref="html2Pdf">
                         <section slot="pdf-content" style="padding:12px">
+                            <div class="text-center">
+                                <h1 class="text-h5" style="font-size: 36px">Laporan Penduduk Permanen Tahun {{ tahunDipilih }}</h1>
+                                <table>
+                                    <tr>
+                                        <td class="text-left">Bulan</td>
+                                        <td class="text-left">: Juni</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-left">Desa / Kelurahan</td>
+                                        <td class="text-left">: {{ desa[0].nama }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-left">Kecamatan</td>
+                                        <td class="text-left">: {{ kecamatan[0].nama }}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <br/>
                             <p class="text-overline">1. Jumlah Penduduk</p>
                             <small>
-                            <table style="width:100%; margin-left:8px; margin-right:8px; margin-bottom:16px;">
+                            <table class="table" style="width:100%; margin-left:8px; margin-right:8px; margin-bottom:16px;">
                                 <thead>
                                     <tr >
                                         <th width="35px" rowspan="3" class="text-center">NO</th>
@@ -178,7 +196,7 @@
                             </small>
                             <p class="text-overline">2. Penduduk Berdasarkan Agama</p>
                             <small>
-                            <table style="width:100%; margin-left:8px; margin-right:8px; margin-bottom:16px">
+                            <table class="table" style="width:100%; margin-left:8px; margin-right:8px; margin-bottom:16px">
                                 <thead>
                                     <tr >
                                         <th width="35px" rowspan="3" class="text-center">NO</th>
@@ -260,7 +278,7 @@
 
                             <p class="text-overline">3. Penduduk Berdasarkan Status Perkawinan</p>
                             <small>
-                            <table style="width:100%; margin-left:8px; margin-right:8px; margin-bottom:16px">
+                            <table class="table" style="width:100%; margin-left:8px; margin-right:8px; margin-bottom:16px">
                                 <thead>
                                     <tr >
                                         <th width="35px" rowspan="3" class="text-center">NO</th>
@@ -333,7 +351,7 @@
                             
                             <p class="text-overline">4. Penduduk Berdasarkan Pendidikan</p>
                             <small>
-                            <table style="width:100%; margin-left:8px; margin-right:8px; margin-bottom:16px">
+                            <table class="table" style="width:100%; margin-left:8px; margin-right:8px; margin-bottom:16px">
                                 <thead>
                                     <tr >
                                         <th width="35px" rowspan="3" class="text-center">NO</th>
@@ -385,7 +403,7 @@
 
                             <p class="text-overline">5. Penduduk Berdasarkan Pekerjaan</p>
                             <small>
-                            <table style="width:100%; margin-left:8px; margin-right:8px; margin-bottom:16px">
+                            <table class="table" style="width:100%; margin-left:8px; margin-right:8px; margin-bottom:16px">
                                 <thead>
                                     <tr >
                                         <th width="35px" rowspan="3" class="text-center">NO</th>
@@ -512,7 +530,28 @@
                                 
                             </table>
                             </small>
-
+                            <br/>
+                            <v-row>
+                                <v-col>
+                                    
+                                </v-col>
+                                <v-col class="text-center">
+                                    
+                                </v-col>
+                                <v-col class="text-center">
+                                    KEPALA DESA
+                                    <br/>
+                                    <br/>
+                                    <center>
+                                    <v-img
+                                        width="128px"
+                                        :src="`http://sikadduduk-morowali.asschem.id/${desa[0].lampiran}`"/>
+                                    </center>
+                                    <br/>
+                                    <i>{{ desa[0].nama_kepala_desa }}</i><br/>
+                                    NIP. {{desa[0].nip_kepala_desa}}
+                                </v-col>
+                            </v-row>
                         </section>
                     </vue-html2pdf>
                 </v-card-text>
@@ -607,10 +646,13 @@ export default {
 }
 </script>
 <style scoped>
-table, th, td
+.table, .table tr th, .table tr td
 {
     border-collapse:collapse;
     border: 1px solid black;
     text-align:center;
+}
+.text-center{
+    text-align:center
 }
 </style>

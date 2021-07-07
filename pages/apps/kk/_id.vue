@@ -39,7 +39,7 @@
                         ref="html2Pdf">
                         <section slot="pdf-content" style="padding:12px">
                             <div class="text-center">
-                                <h1 >Kartu Keluarga</h1>
+                                <h1 class="text-h5" style="font-size: 36px">KARTU KELUARGA</h1>
                                 <h1>No. {{ no_kk }}</h1>
                             </div>
                             <br/>
@@ -154,17 +154,17 @@
                                     Tanda Tangan/Cap Jempol
                                 </v-col>
                                 <v-col class="text-center">
-                                    KEPALA DINAS KEPENDUDUKAN DAN PENCATATAN SIPIL KABUPATEN MOROWALI
+                                    KEPALA DESA
                                     <br/>
                                     <br/>
                                     <center>
                                     <v-img
                                         width="128px"
-                                        src="/ttd/196508251990022001.png"/>
+                                        :src="`http://sikadduduk-morowali.asschem.id/${desa.lampiran}`"/>
                                     </center>
                                     <br/>
-                                    <i>Dra. ROSNAWATI MUSTAPA, M.Si</i><br/>
-                                    NIP. 196508251990022001
+                                    <i>{{ desa.nama_kepala_desa }}</i><br/>
+                                    NIP. {{desa.nip_kepala_desa}}
                                 </v-col>
                             </v-row>
                             <br/>
@@ -187,13 +187,15 @@ export default {
     },
 	props: [],
     async asyncData({ params, $api }) {
-        let no_kk   = params.id
-		let data    = (await $api.$get(`/v1/api/query/master_kk_anggota?where=no_kk='${no_kk}'`)).data
+        let no_kk           = params.id
+		let desa            = (await $api.$get(`/v1/api/detil/master_desa/saya`)).data
+		let data            = (await $api.$get(`/v1/api/query/master_kk_anggota?where=no_kk='${no_kk}'`)).data
         let kepala_keluarga = data.filter((item)=>item.status_hubungan_dalam_keluarga=="kepala keluarga")[0]
 		return {
             no_kk,
             data,
 			kepala_keluarga,
+            desa
 		}
 	},
     beforeMount: function(){

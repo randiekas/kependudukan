@@ -103,14 +103,29 @@ export default {
                         default: 0,
                     }, 
                     {
+                        text: 'Email Pengelola',
+                        value: 'email_pengelola',
+                        info: ['Contoh : email@gmail.com']
+                    }, 
+                    {
                         text: 'Nama Desa',
                         value: 'nama',
                         info: ['Contoh : Keurea dll']
                     }, 
                     {
-                        text: 'Email Pengelola',
-                        value: 'email_pengelola',
-                        info: ['Contoh : email@gmail.com']
+                        text: 'Nama Kepala Desa',
+                        value: 'nama_kepala_desa',
+                        info: ['Contoh : Keurea dll']
+                    }, 
+                    {
+                        text: 'NIP Kepala Desa',
+                        value: 'nip_kepala_desa',
+                        info: ['Contoh : Keurea dll']
+                    }, 
+                    {
+                        text: 'TTD Kepala Desa',
+                        value: 'lampiran',
+                        type:'file',
                     }, 
                     {
                         text: 'Aksi',
