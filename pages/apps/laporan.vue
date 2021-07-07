@@ -389,7 +389,7 @@
                                 <thead>
                                     <tr >
                                         <th width="35px" rowspan="3" class="text-center">NO</th>
-                                        <th width="105px" rowspan="3" class="text-center">DUSUN</th>
+                                        <th width="140px" rowspan="3" class="text-center">DUSUN</th>
                                         <th colspan="30" class="text-center">PEKERJAAN&nbsp;</th>
                                         <th width="105px" rowspan="3" class="text-center">JUMLAH</th>
                                     </tr>

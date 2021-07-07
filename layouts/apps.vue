@@ -64,7 +64,8 @@
 			
 			<nuxt-child
                 :apps="apps[tipe]"
-				:tipe="tipe"/>
+				:tipe="tipe"
+				:handelKeluar="handelKeluar"/>
 			
 		</v-main>
 	</v-app>
@@ -134,17 +135,17 @@ export default {
 						"link":"/apps/dusun"
 					},
 					{
-						"ikon": "mdi-account-box-multiple-outline",
+						"ikon": "mdi-account-group-outline",
 						"nama":"Penduduk",
 						"deskripsi":"Kelola data penduduk",
 						"link":"/apps/penduduk"
 					},
-					// {
-					// 	"ikon": "mdi-account-box-multiple-outline",
-					// 	"nama":"K. Keluarga",
-					// 	"deskripsi":"Kelola data kartu keluarga",
-					// 	"link":"/apps/kk"
-					// },
+					{
+						"ikon": "mdi-account-box-multiple-outline",
+						"nama":"K. Keluarga",
+						"deskripsi":"Kelola data kartu keluarga",
+						"link":"/apps/kk"
+					},
                     {
 						"ikon": "mdi-file-chart",
 						"nama":"Laporan",
@@ -165,5 +166,8 @@ export default {
 <style>
 .border--primary{
 	border: 1px solid #4268F6!important
+}
+.border--white{
+	border: 1px solid white!important
 }
 </style>

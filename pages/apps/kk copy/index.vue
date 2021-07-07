@@ -3,11 +3,24 @@
 		<v-container>
 		<Crud
 			:crud="crud">
-            <template v-slot:action>
-                -
-            </template>
-            <template v-slot:filter="{handleUpdateData, handelSearch}">
+            <template v-slot:filter="{handleUpdateData}">
                 <v-row class="ml-2 mr-2 pt-0 pb-0 justify-center align-center" dense>
+                    <v-col md="2" cols="12">
+                        <v-autocomplete
+                            label="Pilih Provinsi"
+                            v-model="provinsiDipilih"
+                            :items="provinsi"
+                            item-text="nama"
+                            item-value="id"/>
+                    </v-col>
+                    <v-col md="2" cols="12">
+                        <v-autocomplete
+                            label="Pilih Kabupaten"
+                            v-model="kabupatenDipilih"
+                            :items="kabupaten"
+                            item-text="nama"
+                            item-value="id"/>
+                    </v-col>
                     <v-col md="2" cols="12">
                         <v-autocomplete
                             label="Pilih Kecamatan"
@@ -32,13 +45,6 @@
                             item-text="nama"
                             item-value="id"/>
                     </v-col>
-                    <v-col md="4" cols="12">
-                        <v-text-field
-                            v-on:keyup="handelSearch"
-                            label="Kata kunci"
-                            placeholder="Masukkan kata kunci"
-                            />
-                    </v-col>
                     <v-col md="2" cols="12">
                         <v-btn 
                             small 
@@ -52,8 +58,18 @@
                     </v-col>
                 </v-row>
             </template>
-            <template v-slot:aksi="{item}">
-                <v-btn small icon class="primary" :to="`/apps/kk/${item.no_kk}`" dark>
+            <template v-slot:aksi="{item, handleOpenFormEdit, handleKonfirmasiHapus}">
+                <v-btn small icon v-on:click="handleOpenFormEdit(item)">
+                    <v-icon small>
+                        mdi-pencil
+                    </v-icon>
+                </v-btn>
+                <v-btn small icon v-on:click="handleKonfirmasiHapus(item)">
+                    <v-icon small>
+                        mdi-delete
+                    </v-icon>
+                </v-btn>
+                <v-btn small icon class="primary" :to="`/apps/kk/${item.id}`" dark>
                     <v-icon small>
                         mdi-account-group-outline
                     </v-icon>
@@ -106,113 +122,57 @@ export default {
             this.dusun                      = (await this.$api.$get(`/v1/api/query/master_dusun?where=id_desa=${val}`)).data
         },
         dusunDipilih: async function (val) {
-            this.crud.apiData               = `${this.crud.api}?where=status_hubungan_dalam_keluarga=kepala keluarga&id_dusun=${val}`
+            this.crud.apiData               = `${this.crud.api}?where=id_dusun=${val}`
             this.crud.headers[0].default    = val
         },
     },
     beforeMount: function(){
-        this.crud.apiData               = `${this.crud.api}?where=status_hubungan_dalam_keluarga='kepala keluarga'&id_dusun=${this.dusunDipilih}`
+        this.crud.apiData               = `${this.crud.api}?where=id_dusun=${this.dusunDipilih}`
         this.crud.headers[0].default    = this.dusunDipilih
     },
 	data(){
         return {
             crud: {
-                title: "Penduduk",
-                subtitle: "Kelola data penduduk",
-                api: `/v1/api/query/master_kk_anggota`,
-                apiData: `/v1/api/query/master_kk_anggota`,
-                apiTambah: `/v1/api/tambah/master_kk_anggota`,
-                apiUbah: `/v1/api/ubah/master_kk_anggota`,
-                apiHapus: `/v1/api/hapus/master_kk_anggota`,
+                title: "Kartu Keluarga",
+                subtitle: "Kelola data kartu keluarga",
+                api: `/v1/api/query/master_kk`,
+                apiData: `/v1/api/query/master_kk`,
+                apiTambah: `/v1/api/tambah/master_kk`,
+                apiUbah: `/v1/api/ubah/master_kk`,
+                apiHapus: `/v1/api/hapus/master_kk`,
 
-                headers: [    
+                headers: [                    
                     {
-                        text: 'Dusun',
+                        text: 'Desa',
                         value: 'id_dusun',
                         type: 'hidden',
                         table: false,
                         default: 0,
-                    },                 
+                    }, 
                     {
-                        text: 'KK',
+                        text: 'No. KK',
                         value: 'no_kk',
-                        info: ['Contoh : 12030437273947'],
-                        width: '200px',
+                        info: ['Contoh : 12030437273947']
                     }, 
                     {
-                        text: 'NIK',
-                        value: 'nik', 
-                        info: ['Contoh : 12030437273947'],
-                        width: '200px',
+                        text: 'Nama Kartu Keluarga',
+                        value: 'nama_kk',
+                        info: ['Contoh : Yustako']
                     }, 
                     {
-                        text: 'Nama Lengkap',
-                        value: 'nama_lengkap',
-                        width: '200px',
-                        info: ['Contoh : Yustako Latimin']
+                        text: 'Alamat',
+                        value: 'alamat',
+                        info: ['Contoh : Desa Kurea']
                     }, 
                     {
-                        text: 'Tempat Lahir',
-                        value: 'tempat_lahir',
-                        width: '150px',
-                        info: ['Contoh : Kurea']
-                    }, 
-                    {
-                        text: 'Tanggal Lahir',
-                        value: 'tanggal_lahir',
-                        width: '150px',
-                        type: 'date',
-                    }, 
-                    
-                    
-                    {
-                        text: 'Status Hubungan',
-                        value: 'status_hubungan_dalam_keluarga',
-                        type:'select',
-                        width: '150px',
-                        options: [
-                            {
-                                label: 'Kepala Keluarga',
-                                value: 'kepala keluarga',
-                            },
-                            {
-                                label: 'Suami',
-                                value: 'suami',
-                            },
-                            {
-                                label: 'Istri',
-                                value: 'istri',
-                            },
-                            {
-                                label: 'Anak',
-                                value: 'anak',
-                            },
-                            {
-                                label: 'Menantu',
-                                value: 'menantu',
-                            },
-                            {
-                                label: 'Cucu',
-                                value: 'cucu',
-                            },
-                            {
-                                label: 'Orang Tua',
-                                value: 'orang tua',
-                            },
-                            {
-                                label: 'Mertua',
-                                value: 'mertua',
-                            },
-                            {
-                                label: 'Lainnya',
-                                value: 'lainnya',
-                            },
-                        ],
+                        text: 'Kode POS',
+                        value: 'kode_pos',
+                        info: ['Contoh : 494837']
                     }, 
                     {
                         text: 'Aksi',
                         value: 'aksi',
-                        width: '100px',
+                        width: '150px',
                         form: false
                     }
                 ],
