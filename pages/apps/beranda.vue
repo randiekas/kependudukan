@@ -405,8 +405,8 @@ export default {
 						"kawin_tercatat": 0,
 						"kawin_belum_tercatat": 0,
 						"cerai_mati": 0,
-						"dusun": 0,
-						"desa": "desa 2",
+						"dusun": this.dasbor.dusun,
+						"desa": this.dasbor.desa,
 						"ganda": []
 					}
 			}
