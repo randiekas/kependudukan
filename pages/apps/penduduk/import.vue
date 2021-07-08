@@ -413,10 +413,6 @@ export default {
                                 value: 'kepala keluarga',
                             },
                             {
-                                label: 'Suami',
-                                value: 'suami',
-                            },
-                            {
                                 label: 'Istri',
                                 value: 'istri',
                             },
@@ -564,7 +560,7 @@ export default {
                         item.id_dusun       = '[belum dibuat]'
                         error               = true
                     }
-                    
+                    item.status_hubungan_dalam_keluarga = item.status_hubungan_dalam_keluarga.toLocaleLowerCase()
                     item.tanggal_lahir      = this.$moment(item.tanggal_lahir).format('YYYY-MM-DD')
                     item.tanggal_perkawinan = this.$moment(item.tanggal_perkawinan).format('YYYY-MM-DD')
                     return item

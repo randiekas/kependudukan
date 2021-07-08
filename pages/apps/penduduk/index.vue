@@ -404,10 +404,6 @@ export default {
                                 value: 'kepala keluarga',
                             },
                             {
-                                label: 'Suami',
-                                value: 'suami',
-                            },
-                            {
                                 label: 'Istri',
                                 value: 'istri',
                             },
@@ -494,6 +490,10 @@ export default {
                             {
                                 label: 'Datang',
                                 value: 'datang',
+                            },
+                            {
+                                label: 'Permanen',
+                                value: 'permanen',
                             },
                         ],
                     }, 

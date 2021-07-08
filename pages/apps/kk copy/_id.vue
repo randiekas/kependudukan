@@ -263,10 +263,6 @@ export default {
                                 value: 'kepala keluarga',
                             },
                             {
-                                label: 'Suami',
-                                value: 'suami',
-                            },
-                            {
                                 label: 'Istri',
                                 value: 'istri',
                             },
