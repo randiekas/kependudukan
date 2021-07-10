@@ -106,7 +106,7 @@ export default {
             this.dusun                      = (await this.$api.$get(`/v1/api/query/master_dusun?where=id_desa=${val}`)).data
         },
         dusunDipilih: async function (val) {
-            this.crud.apiData               = `${this.crud.api}?where=status_hubungan_dalam_keluarga=kepala keluarga&id_dusun=${val}`
+            this.crud.apiData               = `${this.crud.api}?where=status_hubungan_dalam_keluarga='kepala keluarga'&id_dusun=${val}`
             this.crud.headers[0].default    = val
         },
     },
