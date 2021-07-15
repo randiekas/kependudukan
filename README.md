@@ -67,3 +67,43 @@ More information about the usage of this directory in [the documentation](https:
 This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
 
 More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+
+
+format pengisian pendidikan
+- sd
+- smp
+- sma
+- d1
+- d2
+- d3
+- d4/s1
+- s2
+- s3
+format pengisian pendidikan
+- belum bekerja
+- petani
+- nelayan
+- wiraswasta
+- pns
+- honorer
+- karyawan swasta
+- tni/abri
+- polisi
+- lainnya
+
+format pengisian kawin
+- belum kawin
+- kawin tercatat
+- kawin belum tercatat
+- cerai mati
+- cerai hidup
+
+format pengisian status keluarga
+- kepala keluarga
+- istri
+- anak
+- menantu
+- cucu
+- orang tua
+- mertua
+- lainnya

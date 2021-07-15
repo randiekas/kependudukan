@@ -100,7 +100,7 @@
                                 <table>
                                     <tr>
                                         <td class="text-left">Bulan</td>
-                                        <td class="text-left">: Juni</td>
+                                        <td class="text-left">: {{ bulanDipilih }}</td>
                                     </tr>
                                     <tr>
                                         <td class="text-left">Desa / Kelurahan</td>
