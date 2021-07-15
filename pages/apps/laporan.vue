@@ -96,7 +96,7 @@
                         ref="html2Pdf">
                         <section slot="pdf-content" style="padding:12px">
                             <div class="text-center">
-                                <h1 class="text-h5" style="font-size: 36px">Laporan Penduduk Permanen Tahun {{ tahunDipilih }}</h1>
+                                <h1 class="text-h5" style="font-size: 36px">LAPORAN PENDUDUK PERMANEN TAHUN {{ tahunDipilih }}</h1>
                                 <table>
                                     <tr>
                                         <td class="text-left">Bulan</td>

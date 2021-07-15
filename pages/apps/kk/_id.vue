@@ -295,8 +295,8 @@ export default {
                         width: '150px',
                         options: [
                             {
-                                label: 'Belum / Tidak Sekolah',
-                                value: 'belum',
+                                label: 'Belum/Tidak Sekolah',
+                                value: 'belum/tidak sekolah',
                             },
                             {
                                 label: 'SD',
@@ -324,7 +324,7 @@ export default {
                             },
                             {
                                 label: 'D4/S1',
-                                value: 's1',
+                                value: 'd4/s1',
                             },
                             {
                                 label: 'S2',
@@ -344,7 +344,7 @@ export default {
                         options: [
                             {
                                 label: 'Belum Bekerja',
-                                value: 'belum',
+                                value: 'belum bekerja',
                             },
                             {
                                 label: 'Petani',
@@ -359,8 +359,20 @@ export default {
                                 value: 'wiraswasta',
                             },
                             {
+                                label: 'PNS',
+                                value: 'pns',
+                            },
+                            {
+                                label: 'Honorer',
+                                value: 'honorer',
+                            },
+                            {
+                                label: 'Karyawan Swasta',
+                                value: 'karyawan swasta',
+                            },
+                            {
                                 label: 'TNI/Abri',
-                                value: 'tni',
+                                value: 'tni/abri',
                             },
                             {
                                 label: 'Polisi',
@@ -408,19 +420,23 @@ export default {
                         options: [
                             {
                                 label: 'Belum Kawin',
-                                value: 'belum',
+                                value: 'belum kawin',
                             },
                             {
-                                label: 'Kawin',
-                                value: 'kawin',
+                                label: 'Kawin Tecatat',
+                                value: 'kawin tercatat',
                             },
                             {
-                                label: 'Janda',
-                                value: 'janda',
+                                label: 'Kawin Belum Tercatat',
+                                value: 'kawin belum tercatat',
                             },
                             {
-                                label: 'Duda',
-                                value: 'duda',
+                                label: 'Cerai Mati',
+                                value: 'cerai mati',
+                            },
+                            {
+                                label: 'Cerai Hidup',
+                                value: 'cerai hidup',
                             },
                         ],
                     }, 

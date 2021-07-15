@@ -115,6 +115,12 @@ export default {
 						"link":"/apps/dusun"
 					},
 					{
+						"ikon": "mdi-account-group-outline",
+						"nama":"Penduduk",
+						"deskripsi":"Kelola data penduduk",
+						"link":"/apps/penduduk"
+					},
+					{
 						"ikon": "mdi-account-box-multiple-outline",
 						"nama":"K. Keluarga",
 						"deskripsi":"Kelola data kartu keluarga",
@@ -157,6 +163,14 @@ export default {
 						"nama":"Desa",
 						"deskripsi":"Kelola data master Desa/Kelurahan",
 						"link":"/apps/desa"
+					},
+				],
+				'kecamatan': [
+                    {
+						"ikon": "mdi-file-chart",
+						"nama":"Laporan",
+						"deskripsi":"Informasi laporan",
+						"link":"/apps/laporan"
 					},
 				],
 			},

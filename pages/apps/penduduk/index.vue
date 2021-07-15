@@ -242,8 +242,8 @@ export default {
                         width: '150px',
                         options: [
                             {
-                                label: 'Belum / Tidak Sekolah',
-                                value: 'belum',
+                                label: 'Belum/Tidak Sekolah',
+                                value: 'belum/tidak sekolah',
                             },
                             {
                                 label: 'SD',
@@ -271,7 +271,7 @@ export default {
                             },
                             {
                                 label: 'D4/S1',
-                                value: 's1',
+                                value: 'd4/s1',
                             },
                             {
                                 label: 'S2',
@@ -291,7 +291,7 @@ export default {
                         options: [
                             {
                                 label: 'Belum Bekerja',
-                                value: 'belum',
+                                value: 'belum bekerja',
                             },
                             {
                                 label: 'Petani',
@@ -315,11 +315,11 @@ export default {
                             },
                             {
                                 label: 'Karyawan Swasta',
-                                value: 'karyawan',
+                                value: 'karyawan swasta',
                             },
                             {
                                 label: 'TNI/Abri',
-                                value: 'tni',
+                                value: 'tni/abri',
                             },
                             {
                                 label: 'Polisi',
@@ -367,15 +367,15 @@ export default {
                         options: [
                             {
                                 label: 'Belum Kawin',
-                                value: 'belum',
+                                value: 'belum kawin',
                             },
                             {
                                 label: 'Kawin Tecatat',
-                                value: 'tercatat',
+                                value: 'kawin tercatat',
                             },
                             {
                                 label: 'Kawin Belum Tercatat',
-                                value: 'belum tercatat',
+                                value: 'kawin belum tercatat',
                             },
                             {
                                 label: 'Cerai Mati',

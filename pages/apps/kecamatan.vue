@@ -91,6 +91,11 @@ export default {
                         info: ['Contoh : Bahodopi dll']
                     }, 
                     {
+                        text: 'Email Pengelola',
+                        value: 'email_pengelola',
+                        info: ['Contoh : email@gmail.com']
+                    }, 
+                    {
                         text: 'Aksi',
                         value: 'aksi',
                         width: '100px',

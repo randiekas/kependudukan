@@ -118,11 +118,6 @@ export default {
                         info: ['Contoh : Keurea dll']
                     }, 
                     {
-                        text: 'NIP Kepala Desa',
-                        value: 'nip_kepala_desa',
-                        info: ['Contoh : Keurea dll']
-                    }, 
-                    {
                         text: 'TTD Kepala Desa',
                         value: 'lampiran',
                         type:'file',
