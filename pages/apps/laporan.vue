@@ -549,7 +549,7 @@
                                     </center>
                                     <br/>
                                     <i>{{ desa[0].nama_kepala_desa }}</i><br/>
-                                    NIP. {{desa[0].nip_kepala_desa}}
+                                    
                                 </v-col>
                             </v-row>
                         </section>

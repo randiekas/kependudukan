@@ -164,7 +164,7 @@
                                     </center>
                                     <br/>
                                     <i>{{ desa.nama_kepala_desa }}</i><br/>
-                                    NIP. {{desa.nip_kepala_desa}}
+                                    
                                 </v-col>
                             </v-row>
                             <br/>
