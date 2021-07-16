@@ -100,15 +100,15 @@
                                 <table>
                                     <tr>
                                         <td class="text-left">Bulan</td>
-                                        <td class="text-left">: {{ bulanDipilih }}</td>
+                                        <td class="text-left">: {{ teksBulan }}</td>
                                     </tr>
                                     <tr>
                                         <td class="text-left">Desa / Kelurahan</td>
-                                        <td class="text-left">: {{ desa[0].nama }}</td>
+                                        <td class="text-left">: {{ teksDesa.nama || '-' }}</td>
                                     </tr>
                                     <tr>
                                         <td class="text-left">Kecamatan</td>
-                                        <td class="text-left">: {{ kecamatan[0].nama }}</td>
+                                        <td class="text-left">: {{ teksKecamatan.nama || '-' }}</td>
                                     </tr>
                                 </table>
                             </div>
@@ -545,10 +545,10 @@
                                     <center>
                                     <v-img
                                         width="128px"
-                                        :src="`http://sikadduduk-morowali.asschem.id/${desa[0].lampiran}`"/>
+                                        :src="`http://sikadduduk-morowali.asschem.id/${teksDesa.lampiran}`"/>
                                     </center>
                                     <br/>
-                                    <i>{{ desa[0].nama_kepala_desa }}</i><br/>
+                                    <i>{{ teksDesa.nama_kepala_desa || '-' }}</i><br/>
                                     
                                 </v-col>
                             </v-row>
@@ -587,6 +587,9 @@ export default {
             tahunDipilih: 2021,
             bulan: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'November', 'Oktober', 'Desember'],
             bulanDipilih: 'Juli',
+            teksBulan: 'Juli',
+            teksDesa: {},
+            teksKecamatan: {},
             kabupatenDipilih,
             kecamatan,
             kecamatanDipilih: kecamatan[0].id,
@@ -633,7 +636,10 @@ export default {
             return total
         },
         handelUpdateData: async function(){
-            this.data   = (await this.$api.$get(`/v1/api/laporan_penduduk/${this.desaDipilih}`)).data
+            this.data           = (await this.$api.$get(`/v1/api/laporan_penduduk/${this.desaDipilih}`)).data
+            this.teksBulan      = this.bulanDipilih
+            this.teksDesa       = this.desa.filter((item)=>item.id===this.desaDipilih)[0] || {}
+            this.teksKecamatan  = this.kecamatan.filter((item)=>item.id===this.kecamatanDipilih)[0] || {}
         },
         handelCetak(){
 			this.$refs.html2Pdf.generatePdf()

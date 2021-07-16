@@ -53,7 +53,7 @@
                 </v-row>
             </template>
             <template v-slot:aksi="{item}">
-                <v-btn small icon class="primary" :to="`/apps/kk/${item.no_kk}`" dark>
+                <v-btn small icon class="primary" :to="`/apps/kk/${desaDipilih}/${item.no_kk}`" dark>
                     <v-icon small>
                         mdi-account-group-outline
                     </v-icon>

@@ -187,8 +187,9 @@ export default {
     },
 	props: [],
     async asyncData({ params, $api }) {
-        let no_kk           = params.id
-		let desa            = (await $api.$get(`/v1/api/detil/master_desa/saya`)).data
+        let no_kk           = params.nokk
+        let id_desa         = params.iddesa
+		let desa            = (await $api.$get(`/v1/api/detil/master_desa/${id_desa}`)).data
 		let data            = (await $api.$get(`/v1/api/query/master_kk_anggota?where=no_kk='${no_kk}'`)).data
         let kepala_keluarga = data.filter((item)=>item.status_hubungan_dalam_keluarga.toLocaleLowerCase()=="kepala keluarga")[0]
 		return {
